@@ -1,6 +1,6 @@
 [package]
 name          = "videocore"
-version       = "0.1.3"
+version       = "0.2.0"
 authors       = ["Sean Kerr <sean@metatomic.io>"]
 license       = "Apache-2.0"
 description   = "Rust bindings for Broadcom's VideoCore API"
@@ -9,6 +9,7 @@ repository    = "https://github.com/seankerr/rust-videocore"
 readme        = "README.md"
 keywords      = ["bcm", "broadcom", "raspberrypi", "rpi", "videocore"]
 exclude       = [".gitignore"]
+edition       = "2018"
 
-[dependencies]
-libc = "0.1.10"
+[build-dependencies]
+pkg-config = "0.3.19"

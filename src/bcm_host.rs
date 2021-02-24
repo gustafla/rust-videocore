@@ -19,19 +19,12 @@
 #![allow(dead_code)]
 
 // -------------------------------------------------------------------------------------------------
-// DEPENDENCIES
-// -------------------------------------------------------------------------------------------------
-
-// system
-use libc::uint32_t;
-
-// -------------------------------------------------------------------------------------------------
 // STRUCTS
 // -------------------------------------------------------------------------------------------------
 
 pub struct GraphicsDisplaySize {
-    pub height: uint32_t,
-    pub width:  uint32_t
+    pub height: u32,
+    pub width: u32,
 }
 
 // -------------------------------------------------------------------------------------------------
@@ -44,34 +37,25 @@ pub fn deinit() {
     }
 }
 
-pub fn get_peripheral_address() -> uint32_t {
-    unsafe {
-        return ffi::bcm_host_get_peripheral_address();
-    }
+pub fn get_peripheral_address() -> u32 {
+    unsafe { ffi::bcm_host_get_peripheral_address() }
 }
 
-pub fn get_peripheral_size() -> uint32_t {
-    unsafe {
-        return ffi::bcm_host_get_peripheral_size();
-    }
+pub fn get_peripheral_size() -> u32 {
+    unsafe { ffi::bcm_host_get_peripheral_size() }
 }
 
-pub fn get_sdram_address() -> uint32_t {
-    unsafe {
-        return ffi::bcm_host_get_sdram_address();
-    }
+pub fn get_sdram_address() -> u32 {
+    unsafe { ffi::bcm_host_get_sdram_address() }
 }
 
 pub fn graphics_get_display_size(display_number: u16) -> Option<GraphicsDisplaySize> {
     unsafe {
-        let mut width:  uint32_t = 0;
-        let mut height: uint32_t = 0;
+        let mut width: u32 = 0;
+        let mut height: u32 = 0;
 
         if ffi::graphics_get_display_size(display_number, &mut width, &mut height) == 0 {
-            Some(GraphicsDisplaySize {
-                     height: height,
-                     width:  width
-                 })
+            Some(GraphicsDisplaySize { height, width })
         } else {
             None
         }
@@ -89,24 +73,22 @@ pub fn init() {
 // -------------------------------------------------------------------------------------------------
 
 pub mod ffi {
-    use libc::{ int32_t,
-                uint16_t,
-                uint32_t };
-
-    extern {
+    extern "C" {
         pub fn bcm_host_deinit();
 
-        pub fn bcm_host_get_peripheral_address() -> uint32_t;
+        pub fn bcm_host_get_peripheral_address() -> u32;
 
-        pub fn bcm_host_get_peripheral_size() -> uint32_t;
+        pub fn bcm_host_get_peripheral_size() -> u32;
 
-        pub fn bcm_host_get_sdram_address() -> uint32_t;
+        pub fn bcm_host_get_sdram_address() -> u32;
 
         pub fn bcm_host_init();
 
-        pub fn graphics_get_display_size(display_number: uint16_t,
-                                         width: *mut uint32_t,
-                                         height: *mut uint32_t) -> int32_t;
+        pub fn graphics_get_display_size(
+            display_number: u16,
+            width: *mut u32,
+            height: *mut u32,
+        ) -> i32;
     }
 }
 
@@ -140,7 +122,7 @@ mod test {
     #[test]
     pub fn graphics_test_pass() {
         super::init();
-        let x = super::graphics_get_display_size(0);
+        let x = super::graphics_get_display_size(0).unwrap();
         println!("Display size = {}x{}", x.width, x.height);
         super::deinit();
     }

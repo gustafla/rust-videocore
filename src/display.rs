@@ -22,9 +22,6 @@
 // DEPENDENCIES
 // -------------------------------------------------------------------------------------------------
 
-// system
-use libc::uint32_t;
-
 // -------------------------------------------------------------------------------------------------
 // TYPES
 // -------------------------------------------------------------------------------------------------
@@ -37,38 +34,38 @@ pub type InputFormat = VCOSInputFormat;
 
 #[repr(C)]
 pub enum _3dFormat {
-    UNSUPPORTED = 0, // default
-    INTERLEAVED,     // for autosteroscopic displays
-    SBS_FULL_AUTO,   // side-by-side, full width (also used by some autostereoscopic displays)
-    SBS_HALF_HORIZ,  // side-by-side, half width, horizontal subsampling (see HDMI spec)
-    TB_HALF,         // top-bottom 3D
-    MAX
+    Unsupported = 0, // default
+    Interleaved,     // for autosteroscopic displays
+    SbsFullAuto,     // side-by-side, full width (also used by some autostereoscopic displays)
+    SbsHalfHoriz,    // side-by-side, half width, horizontal subsampling (see HDMI spec)
+    TbHalf,          // top-bottom 3D
+    Max,
 }
 
 #[repr(C)]
 pub enum Dither {
-    NONE   = 0, // default if not set
-    RGB666 = 1,
-    RGB565 = 2,
-    RGB555 = 3,
-    MAX
+    None = 0, // default if not set
+    Rgb666 = 1,
+    Rgb565 = 2,
+    Rgb555 = 3,
+    Max,
 }
 
 #[repr(C)]
 pub enum Interface {
-    MIN,
-    SMI,
-    DPI,
-    DSI,
-    LVDS,
-    MAX
+    Min,
+    Smi,
+    Dpi,
+    Dsi,
+    Lvds,
+    Max,
 }
 
 #[repr(C)]
 pub enum VCOSInputFormat {
-    INVALID = 0,
-    RGB888,
-    RGB565
+    Invalid = 0,
+    Rgb888,
+    Rgb565,
 }
 
 // -------------------------------------------------------------------------------------------------
@@ -76,16 +73,16 @@ pub enum VCOSInputFormat {
 // -------------------------------------------------------------------------------------------------
 
 pub struct Info {
-   pub type_:            Interface,
-   pub width:            uint32_t,
-   pub height:           uint32_t,
-   pub input_format:     InputFormat,
-   pub interlaced:       uint32_t,
-   pub output_dither:    Dither,
-   pub pixel_freq:       uint32_t,
-   pub line_rate:        uint32_t,
-   pub format_3d:        _3dFormat,
-   pub use_pixelvalve_1: uint32_t,
-   pub dsi_video_mode:   uint32_t,
-   pub hvs_channel:      uint32_t
+    pub type_: Interface,
+    pub width: u32,
+    pub height: u32,
+    pub input_format: InputFormat,
+    pub interlaced: u32,
+    pub output_dither: Dither,
+    pub pixel_freq: u32,
+    pub line_rate: u32,
+    pub format_3d: _3dFormat,
+    pub use_pixelvalve_1: u32,
+    pub dsi_video_mode: u32,
+    pub hvs_channel: u32,
 }
