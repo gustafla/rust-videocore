@@ -267,12 +267,24 @@ pub fn element_add(
     src_rect: &mut Rect,
     protection: Protection,
     alpha: &mut VCAlpha,
-    clamp: &mut Clamp,
+    clamp: Option<&mut Clamp>,
     transform: Transform,
 ) -> ElementHandle {
     unsafe {
         ffi::vc_dispmanx_element_add(
-            update, display, layer, dest_rect, src, src_rect, protection, alpha, clamp, transform,
+            update,
+            display,
+            layer,
+            dest_rect,
+            src,
+            src_rect,
+            protection,
+            alpha,
+            match clamp {
+                Some(clamp) => clamp,
+                None => std::ptr::null_mut(),
+            },
+            transform,
         )
     }
 }
