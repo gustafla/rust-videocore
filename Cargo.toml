@@ -13,3 +13,6 @@ edition       = "2018"
 
 [build-dependencies]
 pkg-config = "0.3.19"
+
+[dev-dependencies]
+khronos-egl = { git = "https://github.com/gustafla/khronos-egl", features = ["static", "no-pkg-config"]}
