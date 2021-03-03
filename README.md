@@ -18,7 +18,7 @@ Build with the envvar `PKG_CONFIG_LIBDIR` set to `/opt/vc/lib/pkgconfig`, and
 `PKG_CONFIG_ALLOW_CROSS` set to `1` if necessary.
 See [pkg-config-rs](https://github.com/rust-lang/pkg-config-rs) for details.
 
-For example: to run the example on a Raspberry Pi, run
+For example: to build and run the example on a Raspberry Pi, run
 
 ```
 PKG_CONFIG_LIBDIR=/opt/vc/lib/pkgconfig cargo run --example gles2
