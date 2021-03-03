@@ -1,11 +1,11 @@
 [package]
-name          = "videocore"
-version       = "0.2.0"
-authors       = ["Sean Kerr <sean@metatomic.io>"]
+name          = "rpi_window"
+version       = "1.0.0"
+authors       = ["Sean Kerr <sean@metatomic.io>", "Lauri Gustafsson <me@gustafla.space>"]
 license       = "Apache-2.0"
-description   = "Rust bindings for Broadcom's VideoCore API"
-homepage      = "https://github.com/seankerr/rust-videocore"
-repository    = "https://github.com/seankerr/rust-videocore"
+description   = "One line Raspberry Pi Open GL ES 2.0 window initialization"
+homepage      = "https://github.com/gustafla/dispmanx-rs"
+repository    = "https://github.com/gustafla/dispmanx-rs"
 readme        = "README.md"
 keywords      = ["bcm", "broadcom", "raspberrypi", "rpi", "videocore"]
 exclude       = [".gitignore"]

@@ -16,8 +16,6 @@
 // | Author: Sean Kerr <sean@metatomic.io>                                                         |
 // +-----------------------------------------------------------------------------------------------+
 
-#![allow(dead_code)]
-
 // -------------------------------------------------------------------------------------------------
 // STRUCTS
 // -------------------------------------------------------------------------------------------------
@@ -35,18 +33,6 @@ pub fn deinit() {
     unsafe {
         ffi::bcm_host_deinit();
     }
-}
-
-pub fn get_peripheral_address() -> u32 {
-    unsafe { ffi::bcm_host_get_peripheral_address() }
-}
-
-pub fn get_peripheral_size() -> u32 {
-    unsafe { ffi::bcm_host_get_peripheral_size() }
-}
-
-pub fn get_sdram_address() -> u32 {
-    unsafe { ffi::bcm_host_get_sdram_address() }
 }
 
 pub fn graphics_get_display_size(display_number: u16) -> Option<GraphicsDisplaySize> {
@@ -72,15 +58,9 @@ pub fn init() {
 // FFI
 // -------------------------------------------------------------------------------------------------
 
-pub mod ffi {
+mod ffi {
     extern "C" {
         pub fn bcm_host_deinit();
-
-        pub fn bcm_host_get_peripheral_address() -> u32;
-
-        pub fn bcm_host_get_peripheral_size() -> u32;
-
-        pub fn bcm_host_get_sdram_address() -> u32;
 
         pub fn bcm_host_init();
 
@@ -89,41 +69,5 @@ pub mod ffi {
             width: *mut u32,
             height: *mut u32,
         ) -> i32;
-    }
-}
-
-// -------------------------------------------------------------------------------------------------
-// TESTS
-// -------------------------------------------------------------------------------------------------
-
-#[cfg(test)]
-mod test {
-    #[test]
-    pub fn get_peripheral_address_pass() {
-        super::init();
-        println!("Peripheral address: {}", super::get_peripheral_address());
-        super::deinit();
-    }
-
-    #[test]
-    pub fn get_peripheral_size_pass() {
-        super::init();
-        println!("Peripheral size: {}", super::get_peripheral_size());
-        super::deinit();
-    }
-
-    #[test]
-    pub fn get_sdram_address_pass() {
-        super::init();
-        println!("SDRAM address: {}", super::get_sdram_address());
-        super::deinit();
-    }
-
-    #[test]
-    pub fn graphics_test_pass() {
-        super::init();
-        let x = super::graphics_get_display_size(0).unwrap();
-        println!("Display size = {}x{}", x.width, x.height);
-        super::deinit();
     }
 }

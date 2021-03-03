@@ -13,19 +13,15 @@
 // | See the License for the specific language governing permissions and                           |
 // | limitations under the License.                                                                |
 // +-----------------------------------------------------------------------------------------------+
-// | Author: Sean Kerr <sean@metatomic.io>                                                         |
+// | Author: Sean Kerr <sean@metatomic.io>, Lauri Gustafsson <me@gustafla.space>                   |
 // +-----------------------------------------------------------------------------------------------+
 
 #![allow(clippy::too_many_arguments)]
 #![allow(clippy::missing_safety_doc)]
-#![crate_name = "videocore"]
 
 // -------------------------------------------------------------------------------------------------
 // MODULES
 // -------------------------------------------------------------------------------------------------
 
 pub mod bcm_host;
-pub mod display;
 pub mod dispmanx;
-pub mod image;
-pub mod vchi;
