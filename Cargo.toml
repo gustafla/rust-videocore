@@ -1,11 +1,11 @@
 [package]
 name          = "rpi_window"
-version       = "1.0.0"
+version       = "1.0.1"
 authors       = ["Sean Kerr <sean@metatomic.io>", "Lauri Gustafsson <me@gustafla.space>"]
 license       = "Apache-2.0"
 description   = "Raspberry Pi window initialization for GPU rendering"
-homepage      = "https://github.com/gustafla/dispmanx-rs"
-repository    = "https://github.com/gustafla/dispmanx-rs"
+homepage      = "https://github.com/gustafla/rpi_window"
+repository    = "https://github.com/gustafla/rpi_window"
 readme        = "README.md"
 keywords      = ["bcm", "broadcom", "raspberrypi", "rpi", "videocore"]
 exclude       = [".gitignore"]
